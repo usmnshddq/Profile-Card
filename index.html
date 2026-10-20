@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portofolio personal Usman Shiddiq — profil, sosial media, keterampilan, dan proyek.">
+
+  <title>Profile Card | Usman Shiddiq</title>
+  <link rel="icon" href="profile.png" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="stars stars-left stars-fast"></div>
+<div class="stars stars-left stars-slow"></div>
+
+<div class="stars stars-right stars-slow"></div>
+<div class="stars stars-right stars-fast"></div>
+
+
+  <main class="portfolio-card">
+
+    <!-- PROFILE -->
+    <header class="profile">
+      <img
+        class="avatar"
+        src="shddqq.jpeg"
+        alt="Foto profil Usman Shiddiq"
+        onerror="this.style.display='none';document.querySelector('.avatar-fallback').style.display='grid'"
+      >
+      <div class="photo-message" id="photoMessage">
+       Hayoo, mau liat foto yaa? 
+      </div>
+
+      <div class="avatar-fallback" aria-hidden="true">U</div>
+
+      <h1>USMAN SHIDDIQ</h1>
+
+      <p class="tagline">
+        GRAPHIC DESIGNER, TECH ENTHUSIAST &amp; TI STUDENT
+      </p>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="tabs" aria-label="Navigasi portofolio">
+      <button class="tab active" type="button" data-panel="biography" aria-selected="true">
+        Biography
+      </button>
+
+      <button class="tab" type="button" data-panel="socials" aria-selected="false">
+        Socials
+      </button>
+
+      <button class="tab" type="button" data-panel="skills" aria-selected="false">
+        Skills
+      </button>
+
+      <button class="tab" type="button" data-panel="projects" aria-selected="false">
+        Project
+      </button>
+    </nav>
+
+    <!-- BIOGRAPHY -->
+    <section class="panel" id="biography" aria-labelledby="bio-title">
+      <h2 id="bio-title" class="section-title">
+        A LITTLE STORY ABOUT ME
+      </h2>
+
+      <p class="intro">
+        Halo! Perkenalkan, namaku <strong>Usman Shiddiq</strong>, biasa dipanggil <strong>"MAN"</strong>, seorang mahasiswa Program Studi Teknologi 
+        Informasi di UIN Ar-Raniry Banda Aceh yang saat ini sedang menempuh semester lima. Aku memiliki ketertarikan besar terhadap 
+        dunia teknologi, khususnya dalam bidang pengembangan perangkat lunak, desain digital, serta pengembangan website dan aplikasi. 
+        Selama menjalani perkuliahan, Aku terus berusaha memperluas pengetahuan dan meningkatkan keterampilan melalui berbagai tugas, 
+        proyek, dan eksplorasi teknologi baru. Bagiku, teknologi bukan hanya tentang memahami cara kerja sebuah sistem, tetapi juga 
+        tentang bagaimana menciptakan solusi yang bermanfaat dan mampu menjawab kebutuhan masyarakat.
+      </p>
+
+      <p class="intro">
+        Selain berfokus pada bidang akademik, Aku juga memiliki minat dalam dunia desain kreatif, seperti pembuatan poster, 
+        identitas visual, logo designer, serta desain antarmuka pengguna (UI/UX). Aku senang mempelajari hal-hal baru, mencoba berbagai ide, dan 
+        mengembangkan kemampuan yang dapat mendukung potensi diri, baik di bidang teknologi maupun kreativitas. Aku percaya bahwa proses 
+        belajar tidak berhenti di ruang kelas, sehingga Aku berusaha memanfaatkan berbagai kesempatan untuk menambah pengalaman, 
+        membangun portofolio, dan mempersiapkan diri menghadapi dunia profesional. Ke depannya, Aku berharap dapat menjadi individu yang 
+        kompeten, kreatif, dan mampu menghasilkan karya yang tidak hanya menarik secara visual, tetapi juga memiliki nilai guna dan 
+        memberikan dampak positif bagi orang lain.
+      </p>
+
+      <h2 id="bio-title" class="section-title">
+        EXPLORE ME MORE
+      </h2>
+
+      <div class="bio-meta">
+        <div>
+          <span class="meta-label">FOCUS</span>
+          <span class="meta-label2">Web &amp; Digital Design</span>
+        </div>
+
+        <div>
+          <span class="meta-label">BASED IN</span>
+          <span class="meta-label2">Indonesia &amp; English</span>
+        </div>
+        
+        <a class="meta-card" href="https://link-portofolio-kamu.com" target="_blank" rel="noopener noreferrer">
+          <span class="meta-label">PORTOFOLIO</span>
+          <span class="meta-label2">Visit This Site 🔗</span>
+        </a>
+
+        <a class="meta-card" href="https://link-cv-kamu.com" target="_blank" rel="noopener noreferrer">
+          <span class="meta-label">CV</span>
+          <span class="meta-label2">Visit This Site 🔗</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- SOCIALS -->
+    <section class="panel" id="socials" hidden>
+      <h2 class="section-title">FIND ME ONLINE</h2>
+
+      <div class="link-list">
+        <a
+          class="link-button"
+          href="https://www.instagram.com/usmn_shddq/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img class="social-icon" src="Instagram.png" alt="Instagram">
+          <span>INSTAGRAM</span>
+          <span class="arrow">➜</span>
+        </a>
+
+        <a
+          class="link-button"
+          href="https://www.tiktok.com/@usmandiq_"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img class="social-icon" src="Tiktok.png" alt="TikTok">
+          <span>TIKTOK</span>
+          <span class="arrow">➜</span>
+        </a>
+
+        <a
+          class="link-button"
+          href="https://www.linkedin.com/in/usmnshddq/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img class="social-icon" src="Linkedin.png" alt="LinkedIn">
+          <span>LINKEDIN</span>
+          <span class="arrow">➜</span>
+        </a>
+
+        <a
+          class="link-button"
+          href="https://www.roblox.com/id/users/8794421602/profile"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img class="social-icon" src="Game.png" alt="Roblox">
+          <span>ROBLOX</span>
+          <span class="arrow">➜</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="panel" id="skills" hidden>
+      <h2 class="section-title">WHAT I DO</h2>
+
+      <div class="skill-list">
+
+        <div class="skill">
+          <div class="skill-info">
+            <span>GRAPHIC DESIGN</span>
+            <span>90%</span>
+          </div>
+          <div class="progress">
+            <span style="--level:90%"></span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-info">
+            <span>WEB DEVELOPMENT</span>
+            <span>50%</span>
+          </div>
+          <div class="progress">
+            <span style="--level:50%"></span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-info">
+            <span>UI/UX DESIGN</span>
+            <span>75%</span>
+          </div>
+          <div class="progress">
+            <span style="--level:75%"></span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-info">
+            <span>ROBOTICS ENGINEER</span>
+            <span>60%</span>
+          </div>
+          <div class="progress">
+            <span style="--level:60%"></span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-info">
+            <span>AI IMPLEMENTATION</span>
+            <span>70%</span>
+          </div>
+          <div class="progress">
+            <span style="--level:70%"></span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="panel" id="projects" hidden>
+      <h2 class="section-title">SELECTED PROJECTS</h2>
+
+      <div class="link-list">
+        <a
+          class="link-button"
+          href="https://github.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img class="social-icon" src="computer.png" alt="IT QUEST">
+          <span>IT QUEST</span>
+          <span class="arrow">➜</span>
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- BACKGROUND MUSIC -->
+    <audio id="backgroundMusic" preload="auto">
+      <source src="Swim.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- FOOTER -->
+    <footer>
+      © <span id="year"></span> USMAN SHIDDIQ
+      <span class="footer-dot">•</span>
+      MADE WITH LOVE
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
