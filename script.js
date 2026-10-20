@@ -33,6 +33,9 @@ if (yearElement) {
 // ==================================
 
 const music = document.getElementById("backgroundMusic");
+const musicPopup = document.getElementById("musicPopup");
+const musicYes = document.getElementById("musicYes");
+const musicNo = document.getElementById("musicNo");
 
 // Pengaturan musik
 const START_MINUTE = 0;
@@ -46,8 +49,11 @@ let fadeTimer = null;
 
 // Efek fade-in
 function fadeInMusic() {
+  if (!music) return;
+
   if (fadeTimer) {
     clearInterval(fadeTimer);
+    fadeTimer = null;
   }
 
   const steps = 40;
@@ -71,27 +77,71 @@ function fadeInMusic() {
   }, interval);
 }
 
-// Putar musik otomatis saat halaman dibuka
+// Menutup pop-up musik
+function closeMusicPopup() {
+  if (!musicPopup) return;
+
+  musicPopup.classList.add("music-popup-hidden");
+  musicPopup.setAttribute("aria-hidden", "true");
+}
+
+// Tombol YES: mulai musik setelah interaksi pengguna
 async function startBackgroundMusic() {
   if (!music) return;
 
   try {
+    if (fadeTimer) {
+      clearInterval(fadeTimer);
+      fadeTimer = null;
+    }
+
+    music.pause();
     music.currentTime = START_TIME;
     music.volume = 0;
 
     await music.play();
+
     fadeInMusic();
   } catch (error) {
-    console.info(
-      "Autoplay diblokir browser. Musik mungkin perlu dimulai setelah interaksi pengguna."
-    );
+    console.info("Musik gagal diputar. Silakan coba lagi.");
+
+    // Jika gagal, pengguna dapat mencoba tombol YES lagi.
+    if (musicPopup) {
+      musicPopup.classList.remove("music-popup-hidden");
+      musicPopup.setAttribute("aria-hidden", "false");
+    }
   }
 }
 
-// Setelah lagu selesai, ulang dari awal (00:00)
 if (music) {
   music.loop = false;
+  music.volume = 0;
 
+  // YES: putar musik
+  if (musicYes) {
+    musicYes.addEventListener("click", async () => {
+      closeMusicPopup();
+      await startBackgroundMusic();
+    });
+  }
+
+  // NO: lanjutkan website tanpa musik
+  if (musicNo) {
+    musicNo.addEventListener("click", () => {
+      if (fadeTimer) {
+        clearInterval(fadeTimer);
+        fadeTimer = null;
+      }
+
+      music.pause();
+      music.currentTime = 0;
+      music.volume = 0;
+
+      closeMusicPopup();
+    });
+  }
+
+  // Setelah lagu selesai, ulang dari awal (00:00)
   music.addEventListener("ended", async () => {
     if (fadeTimer) {
       clearInterval(fadeTimer);
@@ -107,41 +157,45 @@ if (music) {
       console.info("Browser memblokir pemutaran ulang musik.");
     }
   });
-
-  startBackgroundMusic();
 }
+
+// ==================================
+// PROFILE PHOTO INTERACTION
+// ==================================
 
 const avatar = document.querySelector(".avatar");
 const photoMessage = document.querySelector("#photoMessage");
 
 let messageTimer;
 
-avatar.addEventListener("pointerdown", (event) => {
-  if (event.button !== 0) return;
+if (avatar && photoMessage) {
+  avatar.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) return;
 
-  avatar.classList.add("photo-pressed");
-});
+    avatar.classList.add("photo-pressed");
+  });
 
-function showPhotoMessage() {
-  avatar.classList.remove("photo-pressed");
+  function showPhotoMessage() {
+    avatar.classList.remove("photo-pressed");
 
-  photoMessage.classList.remove("show");
-
-  // Memulai ulang animasi jika foto diklik berkali-kali
-  void photoMessage.offsetWidth;
-
-  photoMessage.classList.add("show");
-
-  clearTimeout(messageTimer);
-
-  messageTimer = setTimeout(() => {
     photoMessage.classList.remove("show");
-  }, 1000);
+
+    // Memulai ulang animasi jika foto diklik berkali-kali
+    void photoMessage.offsetWidth;
+
+    photoMessage.classList.add("show");
+
+    clearTimeout(messageTimer);
+
+    messageTimer = setTimeout(() => {
+      photoMessage.classList.remove("show");
+    }, 1000);
+  }
+
+  avatar.addEventListener("pointerup", (event) => {
+    if (event.button !== 0) return;
+    showPhotoMessage();
+  });
+
+  avatar.addEventListener("pointercancel", showPhotoMessage);
 }
-
-avatar.addEventListener("pointerup", (event) => {
-  if (event.button !== 0) return;
-  showPhotoMessage();
-});
-
-avatar.addEventListener("pointercancel", showPhotoMessage);
